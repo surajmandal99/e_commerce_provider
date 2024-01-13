@@ -33,12 +33,21 @@ class _ProductCardState extends State<ProductCard> {
           width: 130,
           child: Image.asset(
             widget.product.image,
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
           ),
         ),
-        Text(widget.product.name),
-        Text(widget.product.category),
-        Text('\$' '${widget.product.price}'),
+        Text(
+          widget.product.name,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        Text(
+          widget.product.category,
+          style: const TextStyle(fontSize: 14, color: Colors.red),
+        ),
+        Text(
+          '\$' '${widget.product.price}',
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
       ]),
     );
   }
