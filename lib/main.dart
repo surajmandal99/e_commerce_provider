@@ -48,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: const Text("E-Commerce App"),
         centerTitle: true,
         actions: [
@@ -61,8 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.yellow,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.black,
         currentIndex: currentIndex,
         onTap: (value) {
           setState(() {
@@ -84,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(
                 Icons.person,
               ),
-              label: "Home"),
+              label: "Profile"),
         ],
       ),
       body: screens[currentIndex],

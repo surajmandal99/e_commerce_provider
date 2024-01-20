@@ -20,9 +20,10 @@ class _ProductCardState extends State<ProductCard> {
       width: MediaQuery.of(context).size.width / 2,
       padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: Colors.yellow),
-      child: Column(
-        children: [
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white10),
+      child: Column(children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
