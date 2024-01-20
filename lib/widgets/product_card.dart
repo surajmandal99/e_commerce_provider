@@ -1,3 +1,4 @@
+import 'package:e_commerce_provider/provider/favorite_provider.dart';
 import 'package:flutter/material.dart';
 
 import '../models/products_model.dart';
@@ -13,18 +14,26 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
+    final provider = FavoriteProvider.of(context);
     return Container(
+      // height: 400,
       width: MediaQuery.of(context).size.width / 2,
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: Colors.white),
-      child: Column(children: [
-        const Row(
+          borderRadius: BorderRadius.circular(8), color: Colors.yellow),
+      child: Column(
+        children: [
+        Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(
-              Icons.favorite_border_outlined,
-              color: Colors.red,
+            GestureDetector(
+              onTap: () => provider.addToFavorites(widget.product),
+              child: Icon(
+                provider.isExist(widget.product)
+                    ? Icons.favorite
+                    : Icons.favorite_border_outlined,
+                color: Colors.red,
+              ),
             ),
           ],
         ),

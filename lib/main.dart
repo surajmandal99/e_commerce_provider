@@ -1,7 +1,12 @@
+import 'package:e_commerce_provider/provider/cart_provider.dart';
+import 'package:e_commerce_provider/screens/cart_details_screen.dart';
 import 'package:e_commerce_provider/screens/favorite_screen.dart';
 import 'package:e_commerce_provider/screens/home_screen.dart';
 import 'package:e_commerce_provider/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'provider/favorite_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider())
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen(),
+      ),
     );
   }
 }
@@ -39,6 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("E-Commerce App"),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const CartDetailsScreen();
+                }));
+              },
+              icon: const Icon(Icons.add_shopping_cart_rounded))
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.yellow,
