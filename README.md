@@ -9,4 +9,8 @@
 
 3.Categories
 
+# State Management  Used:
+
+## Provider 
+
 
