@@ -1,9 +1,10 @@
+import 'package:e_commerce_provider/widgets/snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../provider/cart_provider.dart';
 
 class CartDetailsScreen extends StatefulWidget {
-  // final Product product;
   const CartDetailsScreen({super.key});
 
   @override
@@ -48,21 +49,67 @@ class _CartDetailsScreenState extends State<CartDetailsScreen> {
                       return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
-                              child: ListTile(
-                                  leading: Image.asset(finalList[index].image),
-                                  title: Text(finalList[index].name),
-                                  subtitle:
-                                      Text(finalList[index].price.toString()),
-                                  trailing: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        buildProductQuality(Icons.add, index),
-                                        Text(finalList[index]
-                                            .quantity
-                                            .toString()),
-                                        buildProductQuality(Icons.remove, index)
-                                      ]))));
-                    }))
+                              child: Slidable(
+                            endActionPane: ActionPane(
+                                motion: const ScrollMotion(),
+                                children: [
+                                  SlidableAction(
+                                    onPressed: (context) {
+                                      finalList[index].quantity = 1;
+                                      finalList.removeAt(index);
+                                      setState(() {});
+                                    },
+                                    backgroundColor: Colors.red,
+                                    foregroundColor: Colors.white,
+                                    icon: Icons.delete,
+                                    label: "Delete",
+                                  )
+                                ]),
+                            child: ListTile(
+                                leading: Image.asset(
+                                  finalList[index].image,
+                                  // fit: BoxFit.cover,
+                                ),
+                                title: Text(finalList[index].name),
+                                subtitle:
+                                    Text(finalList[index].price.toString()),
+                                trailing: Column(
+                                    // mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      buildProductQuality(Icons.remove, index),
+                                      Text(
+                                          finalList[index].quantity.toString()),
+                                      buildProductQuality(Icons.add, index)
+                                    ])),
+                          )));
+                    })),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              alignment: Alignment.center,
+              width: double.infinity,
+              height: 100,
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10))),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '\$${provider.getTotalPrice()}',
+                      style: const TextStyle(
+                          fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+                    ElevatedButton.icon(
+                        onPressed: () {
+                          SnackBarUtils.showSnackBar(
+                              context, "Payment is not implemented yet");
+                        },
+                        icon: const Icon(Icons.send),
+                        label: const Text("Pay"))
+                  ]),
+            ),
           ],
         ));
   }

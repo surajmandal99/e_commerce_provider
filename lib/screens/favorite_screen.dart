@@ -48,22 +48,27 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         )
                       ],
                     ),
-                    child: ListTile(
-                      title: Text(favoritelList[index].name),
-                      subtitle: Text(favoritelList[index].description),
-                      leading: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: AssetImage(
-                          favoritelList[index].image,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: ListTile(
+                          title: Text(favoritelList[index].name),
+                          subtitle: Text(favoritelList[index].description),
+                          leading: CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage(
+                              favoritelList[index].image,
+                            ),
+                            backgroundColor: Colors.red.shade200,
+                          ),
+                          trailing: Text(
+                            '\$${favoritelList[index].price}',
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          // tileColor: Colors.green,
                         ),
-                        backgroundColor: Colors.red.shade200,
                       ),
-                      trailing: Text(
-                        '\$${favoritelList[index].price}',
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      tileColor: Colors.green,
                     ),
                   );
                 }))
