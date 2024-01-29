@@ -29,10 +29,12 @@
 ![Screenshot_2024-01-29-11-20-41-2![cart](https://github.com/surajmandal99/e_commerce_provider/assets/105273927/e3cad620-f896-403c-84ef-0c4a97afabb1)
 
 ## Details Screen:
+      👇
 
 8_6fd9fe178de9ce21e17ab63fe79c399e](https://github.com/surajmandal99/e_commerce_provider/assets/105273927/cf89c5a1-6ff6-46a6-856e-81c385192fb3)
 
 ## Cart Screen:
+      👇
 
 ![Screenshot_2024-01-29-11-20-45-77_6fd9fe178de9ce21e17ab63fe79c399e]![Screenshot_2024-01-29-11-20-53-98_6fd9fe178de9ce21e17ab63fe79c399e](https://github.com/surajmandal99/e_commerce_provider/assets/105273927/fef21b79-1460-4848-bb59-570e06f8f558)
 
