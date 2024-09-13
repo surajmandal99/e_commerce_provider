@@ -10,8 +10,14 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("ProfileScreen")),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Drawer"),
+      ),
+      drawer: const Drawer(
+        backgroundColor: Colors.green,
+        child: Text('Drawer'),
+      ),
     );
   }
 }

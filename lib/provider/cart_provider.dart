@@ -8,8 +8,8 @@ class CartProvider extends ChangeNotifier {
 
   void addToCart(Product product) {
     if (_cart.contains(product)) {
-      for (Product element in _cart) {
-        element.quantity++;
+      for (Product item in _cart) {
+        item.quantity++;
       }
     } else {
       _cart.add(product);
@@ -22,8 +22,8 @@ class CartProvider extends ChangeNotifier {
 
   getTotalPrice() {
     double total = 0.0;
-    for (Product element in _cart) {
-      total += element.price * element.quantity;
+    for (Product item in _cart) {
+      total += item.price * item.quantity;
     }
     return total;
   }
